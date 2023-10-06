@@ -1,0 +1,257 @@
+#include<bits/stdc++.h>
+using namespace std;
+void originalarray(int n,int arr[])
+{
+    cout<<"The original array is ";
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    cout<<"\n";
+    
+}
+void getlargest(int n,int arr[])
+{
+    int large = arr[0];
+    for(int i=0;i<n;i++)
+    {
+        if(large<arr[i])
+        {
+            large=arr[i];
+        }
+    }
+    cout<<large;
+    cout<<"\n";
+}
+void getsmallest(int n,int arr[])
+{
+    int small = arr[0];
+    for(int i=0;i<n;i++)
+    {
+        if(small>arr[i])
+        {
+            small=arr[i];
+        }
+    }
+    cout<<small;
+    cout<<"\n";
+}
+void secondlargest(int n,int arr[])
+{
+    int largest;
+    int smallest;
+    if(arr[0] > arr[1])
+    {
+    largest=arr[0];
+    smallest=arr[1];
+    }
+    else
+    {
+    largest=arr[1];
+    smallest=arr[0];
+    }
+    for(int i=2;i<n;i++)
+    {
+        if(arr[i]>largest)
+        {
+        smallest=largest;
+        largest=arr[i];
+        }
+        else if(arr[i]>smallest)
+        {
+        smallest=arr[i];
+        }
+    }
+    cout<<"The second largest number in an array is ";
+    cout<<smallest;
+    cout<<"\n";
+}
+void secondsmallest(int n,int arr[])
+{
+    int s1;
+    int s2;
+    if(arr[0] < arr[1])
+    {
+    s1=arr[0];
+    s2=arr[1];
+    }
+    else
+    {
+    s1=arr[1];
+    s2=arr[0];
+    }
+    for(int i=2;i<n;i++)
+    {
+        if(arr[i]<s1)
+        {
+        s2=s1;
+        s1=arr[i];
+        }
+        else if(arr[i]<s2)
+        {
+        s2=arr[i];
+        }
+    }
+    cout<<"The second smallest number in an array is ";
+    cout<<s2;
+    cout<<"\n";
+}
+void delete_the_duplicate(int n,int arr[])
+{
+    for(int i=0;i<n;i++)
+    {
+        for(int j=i+1;j<n;j++)
+        {
+            if(arr[i]==arr[j])
+            {
+            for(int k=j;k<n;k++)
+            {
+                arr[k]=arr[k+1];
+            }
+
+            n--;
+            }
+        }
+    }
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    
+    
+}
+void delete_at(int n,int arr[])
+{
+    int position,count=1;
+    cout<<"Enter the position that you want to delete -> ";
+    cin>>position;
+    for(int i=0;i<n;i++)
+    {
+        if(count==position)
+        {
+        for(int j=i;j<n;j++)
+        {
+            arr[j]=arr[j+1];
+        }
+        n--;
+        }
+        count++;
+    }
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+}
+void insertion_at_begin(int n,int arr[])
+{
+    int data;
+    cout<<"Enter the data that you want to insert-> ";
+    cin>>data;
+    for(int i=n-1;i>=0;i--)
+    {
+        arr[i+1]=arr[i];
+    }
+    arr[0]=data;
+    n++;
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+}
+void insertion_at_end(int n,int arr[])
+{
+    int data;
+    cout<<"Enter the data that you want to insert-> ";
+    cin>>data;
+    arr[n]=data;
+    n++;
+    
+    for(int i=0;i<n;i++)
+    {
+       cout<<arr[i]<<" ";
+    }
+}
+void insert_at(int n,int arr[])
+{
+    int p,count=1;
+    int data;
+    cout<<"Enter the position where you would like to insert -> ";
+    cin>>p;
+    cout<<"Enter the data -> ";
+    cin>>data;
+    if(p<n)
+    {
+    for(int i=0;i<n;i++)
+    {
+        if(count==p)
+        {
+            for(int j=n-1;j>=i;j--)
+            {
+            arr[j+1]=arr[j];
+            }
+            arr[i]=data;
+            n++;
+            
+        }
+        count++;
+        
+    }
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    }
+    else if(p==n+1)
+    {
+        arr[n]=data;
+        for(int i=0;i<=n;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    }
+    else
+    {
+        cout<<"Invalid position";
+    }
+        
+        
+    
+}
+int main()
+{
+    cout<<" Enter 1 for original array\n Enter 2 to get largest\n Enter 3 to get second largest\n Enter 4 to get smallest\n Enter 5 to get second smallest\n Enter 6 to delete duplicates\n Enter 7 to delete\n Enter 8 to insertion at begin\n Enter 9 to insertion at end\n Enter 10 to insert at desired place\n ";
+    cout<<"Enter the array size: ";
+    int n;
+    cin>>n;
+    int arr[n];
+    cout<<"Enter the array: ";
+    for(int i=0;i<n;cin>>arr[i++]);
+    int op;
+    cout<<"Enter the operation: ";
+    cin>>op;
+    switch(op)
+    {
+    case 1: originalarray(n,arr);
+    break;
+    case 2: getlargest(n,arr);
+    break;
+    case 3: secondlargest(n,arr);
+    break;
+    case 4: getsmallest(n,arr);
+    break;
+    case 5: secondsmallest(n,arr);
+    break;
+    case 6: delete_the_duplicate(n,arr);
+    break;
+    case 7: delete_at(n,arr);
+    break;
+    case 8: insertion_at_begin(n,arr);
+    break;
+    case 9: insertion_at_end(n,arr);
+    break;
+    case 10: insert_at(n,arr);
+    break;
+    default : cout<<"!!!INVALID!!!";
+    }
+    return 0;
+}
