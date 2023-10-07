@@ -49,6 +49,35 @@ void insertion_at_end(node **head, int data)
 }
 
 
+//Insertion at middle
+void insertion_at_middle(node **head, int data)
+{
+    node *newnode = creation_of_node(data);
+    if(*head==NULL)
+    {
+        *head = newnode;
+    }
+    else
+    {
+        int position;
+        cout<<"Enter the position that you want to insert-> ";
+        cin>>position;
+        int count = 1;
+        node *temp,*prev;
+        for(temp = *head;temp!=NULL;temp=temp->next)
+        {
+            if(count==position)
+                break;
+            count++;
+            prev=temp;
+        }
+        newnode->next = temp;
+        prev->next = newnode;
+    }
+}
+
+
+
 //displaying values
 void traversal(node *head)
 {
@@ -75,5 +104,10 @@ int main()
         //insertion_at_begin(&head, data);
         insertion_at_end(&head, data);
     }
+    int newdata;
+    cout<<"Enter the data that you want to insert-> ";
+    cin>>newdata;
+    insertion_at_middle(&head,newdata);
+    traversal(head);
     traversal(head);
 }
