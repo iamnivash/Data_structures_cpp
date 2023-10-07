@@ -1,0 +1,79 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+//Linked list Node Definition
+struct node{
+    int data;
+    struct node *next;
+};
+
+//Node Creation
+node *creation_of_node(int data)
+{
+    node *newnode = new node;
+    newnode->data = data;
+    newnode->next = NULL;
+    return newnode;
+}
+
+
+//Insertion at begining
+void insertion_at_begin(node **head, int data)
+{
+    node *newnode = creation_of_node(data);
+    if(*head==NULL)
+    {
+        *head = newnode;
+    }
+    else{
+        newnode->next = *head;
+        *head = newnode;
+    }
+}
+
+//Inserting at end
+void insertion_at_end(node **head, int data)
+{
+    node *newnode = creation_of_node(data);
+    if(*head==NULL)
+    {
+        *head = newnode;
+    }
+    else
+    {
+        node *temp;
+        for(temp = *head; temp->next!=NULL;temp=temp->next);  //Iterate till last element
+        temp->next=newnode;
+    
+    }
+}
+
+
+//displaying values
+void traversal(node *head)
+{
+    node * temp;
+    for(temp=head;temp!=NULL;temp=temp->next)
+    {
+        cout<<temp->data<<" ";
+    }
+}
+
+
+
+int main()
+{
+    node *head = NULL;
+    while(1)
+    {
+        int data;
+        cin>>data;
+        if(data == -1)
+        {
+            break;
+        }
+        //insertion_at_begin(&head, data);
+        insertion_at_end(&head, data);
+    }
+    traversal(head);
+}
