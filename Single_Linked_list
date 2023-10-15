@@ -206,15 +206,35 @@ int main()
         //insertion_at_begin(&head, data);
         insertion_at_end(&head, data);
     }
-    //int newdata;
-    //cout<<"Enter the data that you want to insert-> ";
-    //cin>>newdata;
-    //insertion_at_middle(&head,newdata);
-    //deletion_at_begin(&head);
-    //deletion_at_end(&head);
-    //search_and_delete(&head);
-    cout<<"Reverse Traversal -> ";
-    reversing_the_LL(&head);
-    traversal(head);
+    cout<<"                          LINKED LIST OPERATIONS                        "<<endl;
+    cout<<"1.Insert Data at position.\n2.Delete at begin.\n3.Delete at end.\n4.Search and delete.\n5.Reverse the Linked list.\n"; 
+    cout<<"Enter the Operation -> ";
+    int op;
+    cin>>op;
+    switch(op)
+    {
+        case 1: int newdata;
+        cout<<"Enter the data that you want to insert-> ";
+        cin>>newdata;
+        insertion_at_middle(&head,newdata);
+        traversal(head);
+        break;
+        case 2: deletion_at_begin(&head);
+        traversal(head);
+        break;
+        case 3: deletion_at_end(&head);
+        traversal(head);
+        break;
+        case 4: search_and_delete(&head);
+        traversal(head);
+        break;
+        case 5: cout<<"Reverse Traversal -> ";
+        reversing_the_LL(&head);
+        traversal(head);
+        break;
+        default : cout<<"!!!INVALID!!!";
+    }
+    return 0;
+    
     
 }
