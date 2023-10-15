@@ -191,6 +191,20 @@ void reversing_the_LL(node **head)
 }
 
 
+//Dispay elements using Recursion
+void display_rescursive(node *head)
+{
+    node *temp = head;
+    if(temp==NULL)
+    {
+        return;
+    }
+    display_rescursive(temp->next);
+    cout<<temp->data<<" ";
+    
+}
+
+
 
 int main()
 {
@@ -234,6 +248,7 @@ int main()
         break;
         default : cout<<"!!!INVALID!!!";
     }
+    //display_rescursive(head);
     return 0;
     
     
